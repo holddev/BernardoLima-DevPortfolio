@@ -1,0 +1,31 @@
+---
+import { projects } from "../constants/consts";
+import Siutcase from "./icons/Siutcase.astro";
+import IconTitle from "./IconTitle.astro";
+import ProjectCard from "./ProjectCard.astro";
+
+interface Props {
+  id: string;
+}
+---
+
+<section class="pt-16" {...Astro.props}>
+  <IconTitle title="Proyectos">
+    <Siutcase class="size-8" />
+  </IconTitle>
+
+  <ul class="flex gap-y-6 flex-col justify-center">
+    {
+      projects.map(({ name, description, image, tech, github, link }) => (
+        <ProjectCard
+          name={name}
+          description={description}
+          image={image}
+          tech={tech}
+          link={link}
+          github={github}
+        />
+      ))
+    }
+  </ul>
+</section>

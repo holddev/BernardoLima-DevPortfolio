@@ -1,0 +1,79 @@
+---
+import { content } from "../constants/consts";
+import Logo from "./icons/Logo.astro";
+---
+
+<header
+  class="dark:bg-[#3f0fff6c] text-[#e5e7eb]
+  flex sm:justify-between justify-center items-center
+  py-2 px-16 w-full fixed top-0 left-0 z-10"
+>
+  <h2 class="sm:block hidden">
+    <a href="#inicio" title="Portfolio logo" aria-label="Portfolio logo"
+      ><Logo class="size-10" /></a
+    >
+  </h2>
+  <nav>
+    <ul
+      class="flex justify-between items-center gap-10 font-questrial text-base"
+    >
+      {
+        content.navLinks.map(({ href, text, label }) => {
+          return (
+            <li>
+              <a
+                id="item-menu"
+                class="hover:text-[#e58b03] transition-all duration-300"
+                aria-label={label}
+                href={href}
+              >
+                {text}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const itemsMenu = document.querySelectorAll(
+    "header nav ul li a",
+  ) as NodeListOf<HTMLAnchorElement>;
+  const sections = document.querySelectorAll("main section");
+
+  if (itemsMenu.length > 0 && sections.length > 0) {
+    const observerCallback = function (
+      entries: IntersectionObserverEntry[],
+      itemsMenu: NodeListOf<HTMLAnchorElement>,
+    ) {
+      entries.forEach((entry) => {
+        const id = entry.target.id;
+        if (entry.isIntersecting) {
+          itemsMenu.forEach((item) => {
+            if (item.getAttribute("href") === `#${id}`) {
+              item.classList.add("text-[#c4872c]");
+            } else {
+              item.classList.remove("text-[#c4872c]");
+            }
+          });
+        }
+      });
+    };
+
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "70px",
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      observerCallback(entries, itemsMenu);
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  }
+</script>

@@ -1,0 +1,33 @@
+---
+import User from "./icons/User.astro";
+import IconTitle from "./IconTitle.astro";
+
+interface Props {
+  id: string;
+}
+---
+
+<section class="pt-16" {...Astro.props}>
+  <IconTitle title="Sobre mí">
+    <User class="size-8" />
+  </IconTitle>
+
+  <p class="pb-4">
+    ¡Hola! Soy Bernardo Lima Cardenas 👨‍💻💻, un apasionado y autodidacta del
+    desarrollo web. Siempre me tuve curiosidad acerca del trasfondo que conlleva
+    la construcción de aplicaciones y servicios en línea. Actualmente, estoy
+    aprendiendo nuevas tecnologías como Astro JS y React JS, lo que me motiva a
+    seguir explorando el potencial de la web.
+  </p>
+  <p class="pb-4">
+    Mi objetivo es seguir creciendo como desarrollador 📚 y aplicar mis
+    habilidades en un entorno real. Estoy comprometido a mejorar continuamente,
+    afrontar nuevos desafíos que me permitan crecer tanto personal como
+    profesionalmente.
+  </p>
+  <p class="pb-4">
+    Fuera del mundo del código, disfruto de hacer ejercicio regularmente, lo que
+    me ayuda a mantener un equilibrio en mi vida. Estoy emocionado por las
+    oportunidades que vienen y listo para enfrentar nuevos desafíos 🎉.
+  </p>
+</section>

@@ -1,0 +1,90 @@
+---
+import type { Project } from "../constants/consts";
+import Github from "./icons/Github.astro";
+import Link from "./icons/Link.astro";
+
+type Props = Project;
+
+const { name, description, image, tech, github, link } = Astro.props;
+---
+
+<li
+  class="bg-gradient-to-b from-[#251454] to-[#030712]
+  rounded-lg p-2
+  shadow-md shadow-[#2c1765] sm:w-full"
+>
+  <article
+    class="w-full flex flex-col sm:flex-row sm:items-start items-center gap-4"
+  >
+    <div
+      class="w-full sm:w-[40%] h-full flex items-start justify-start border-2 border-black rounded-md overflow-hidden"
+    >
+      <img
+        src={image}
+        alt={name}
+        class="w-full sm:h-52 h-72 object-cover scale-110 hover:scale-100 transition"
+        loading="lazy"
+      />
+    </div>
+    <div class="w-full sm:w-[60%]">
+      <h4 class="font-bold">{name}</h4>
+      <p class="py-4 text-pretty text-[#aeaead]">
+        {description}
+      </p>
+      <ul class="flex sm:justify-start justify-center items-center gap-3 py-1">
+        {
+          tech.map(({ icon: Icon, name, color }) => (
+            <li
+              class=" flex items-center justify-center gap-1 
+              border-1 rounded-full px-3 py-1"
+              style={{ backgroundColor: color || "#E5E7EB" }}
+            >
+              <Icon class="size-4" />
+              <span class="text-xs">{name}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="flex gap-3 justify-end pt-4">
+        {
+          github && (
+            <li>
+              {" "}
+              <a
+                class="flex gap-1 items-center justify-center
+              py-1 px-2 rounded-md border-[1px] border-[#7a7878]
+              scale-100 hover:scale-105 transition-all duration-300
+              bg-[#272525] hover:bg-[#2e2d2d]"
+                href={github}
+                aria-label="codigo"
+                rel="noopener nooferrer"
+                target="_blank"
+              >
+                <Github class="size-4 text-[#ebeced]" /> Code
+              </a>
+            </li>
+          )
+        }
+        {
+          link && (
+            <li>
+              {" "}
+              <a
+                class="flex gap-1 items-center justify-center
+              py-1 px-2 rounded-md border-[1px] border-[#7a7878]
+              scale-100 hover:scale-105 transition-all duration-300
+              bg-[#272525] hover:bg-[#2e2d2d]"
+                href={link}
+                aria-label="sitio"
+                rel="noopener nooferrer"
+                target="_blank"
+              >
+                <Link class="size-4 text-[#ebeced]" /> Preview
+              </a>
+            </li>
+          )
+        }
+      </ul>
+    </div>
+  </article>
+</li>

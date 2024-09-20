@@ -1,0 +1,45 @@
+---
+import { skills } from "../constants/consts";
+import Code from "./icons/Code.astro";
+import IconTitle from "./IconTitle.astro";
+interface Props {
+  id: string;
+}
+---
+
+<section class="pt-16" {...Astro.props}>
+  <IconTitle title="Habilidades">
+    <Code class="size-8" />
+  </IconTitle>
+  <div class="w-full overflow-hidden">
+    <ul class="skills w-auto flex items-center justify-center sm:gap-4 gap-4">
+      {
+        skills.map(({ name, icon: Icon }) => (
+          <li class="skill flex flex-col items-center justify-center flex-shrink-0">
+            <Icon class="sm:size-16 size-12" />
+            <span class="sm:text-1 text-[.8rem]">{name}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .skills {
+    display: flex;
+    animation: scroll 5s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(-2rem);
+    }
+    50% {
+      transform: translateX(2rem);
+    }
+    100% {
+      transform: translateX(-2rem);
+    }
+  }
+</style>
