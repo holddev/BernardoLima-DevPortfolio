@@ -1,0 +1,58 @@
+---
+import ArrowLeft from "./icons/ArrowLeft.astro";
+import Document from "./icons/Document.astro";
+import Download from "./icons/Download.astro";
+---
+
+<button
+  id="viewCv"
+  class="flex justify-center gap-1 mx-auto my-10 py-1 p-2
+border-2 text-[#ff9900] border-[#0000] border-b-[#ff9900] rounded-full
+hover:bg-[#ff9900] hover:text-[#000] hover:border-[#0000] transition-all duration-300"
+  aria-label="Ver Curriculum Vitae"
+>
+  <Document class="size-5" />Ver CV</button
+>
+<dialog id="dialogView" class="h-[100vh] overflow-hidden">
+  <div class="flex items-start rounded-sm z-20">
+    <button id="closeCv" aria-label="Volver al inicio">
+      <ArrowLeft
+        class="size-7 hover:text-[#6a41dc] transition-all duration-300"
+      />
+    </button>
+    <div class="md:h-[500px] h-[90vh]">
+      <img
+        class="object-cover w-full h-full"
+        src="/assets/cv01.webp"
+        alt="Curriculum Vitae de Bernardo Lima"
+      />
+    </div>
+    <a
+      href="/Bernardo_CV_002.pdf"
+      rel="noopener noreferrer"
+      download
+      aria-label="Descargar Curriculum Vitae"
+    >
+      <Download
+        class="size-7 hover:text-[#6a41dc] transition-all duration-300"
+      />
+    </a>
+  </div>
+</dialog>
+
+<script>
+  const openCV = document.getElementById("viewCv");
+  const closeCV = document.getElementById("closeCv");
+  const dialogView = document.getElementById("dialogView") as HTMLDialogElement;
+  if (
+    openCV instanceof HTMLButtonElement &&
+    closeCV instanceof HTMLButtonElement
+  ) {
+    openCV.addEventListener("click", () => {
+      dialogView.showModal();
+    });
+    closeCV.addEventListener("click", () => {
+      dialogView.close();
+    });
+  }
+</script>
