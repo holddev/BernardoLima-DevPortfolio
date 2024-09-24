@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
+    "@astrojs/deno": "^5.0.1",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/jura": "^5.0.21",
     "@fontsource/questrial": "^5.0.14",
