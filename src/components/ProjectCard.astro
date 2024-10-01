@@ -31,7 +31,7 @@ const { name, description, image, tech, github, link } = Astro.props;
       <p class="py-4 text-pretty text-[#aeaead]">
         {description}
       </p>
-      <ul class="flex sm:justify-start justify-center items-center gap-3 py-1">
+      <ul class="flex justify-start items-center gap-3 py-1">
         {
           tech.map(({ icon: Icon, name, color }) => (
             <li
