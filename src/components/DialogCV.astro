@@ -13,14 +13,14 @@ hover:bg-[#ff9900] hover:text-[#000] hover:border-[#0000] transition-all duratio
 >
   <Document class="size-5" />Ver CV</button
 >
-<dialog id="dialogView" class="h-[100vh] overflow-hidden">
-  <div class="flex items-start rounded-sm z-20">
+<dialog id="dialogView" class="h-[100vh] overflow-auto">
+  <div class="flex items-start justify-center rounded-sm z-20">
     <button id="closeCv" aria-label="Volver al inicio">
       <ArrowLeft
-        class="size-7 hover:text-[#6a41dc] transition-all duration-300"
+        class="size-7 hover:text-[#774ded] transition-all duration-300"
       />
     </button>
-    <div class="md:h-[500px] h-[90vh]">
+    <div class="md:h-[500px] sm:h-[90vh] h-full mt-10 sm:mt-0">
       <img
         class="object-cover w-full h-full"
         src="/assets/cv01.webp"
@@ -34,7 +34,7 @@ hover:bg-[#ff9900] hover:text-[#000] hover:border-[#0000] transition-all duratio
       aria-label="Descargar Curriculum Vitae"
     >
       <Download
-        class="size-7 hover:text-[#6a41dc] transition-all duration-300"
+        class="size-7 hover:text-[#774ded] transition-all duration-300"
       />
     </a>
   </div>
