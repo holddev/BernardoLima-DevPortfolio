@@ -156,7 +156,7 @@ export const projects: Project[] = [
     name: 'Calculadora de operaciones básicas',
     description: 'Esta calculadora utiliza las tecnologías fundamentales del desarrollo web. Además, se emplea el popular lenguaje de programación JavaScript. Su objetivo es demostrar mis habilidades en el uso de herramientas potentes que forman la base del desarrollo de sitios web.',
     image: '../assets/Calculadora.webp',
-    tech: [Tags.ASTROJS, Tags.TAILWIND],
+    tech: [Tags.HTML, Tags.CSS, Tags.JS],
     link: 'https://elementary-calculator.pages.dev/',
     github: 'https://github.com/Usuario6842/calculadora-simple'
   },
