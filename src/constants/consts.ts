@@ -150,7 +150,7 @@ export const projects: Project[] = [
     image: '../assets/TodoApp.webp',
     tech: [Tags.REACTJS, Tags.TS, Tags.SASS],
     link: 'https://todo-app-ts-beta.vercel.app/',
-    github: 'https://github.com/Usuario6842/react-todo-app-ts'
+    github: 'https://github.com/holddev/react-todo-app-ts'
   },
   {
     name: 'Calculadora de operaciones básicas',
@@ -158,7 +158,7 @@ export const projects: Project[] = [
     image: '../assets/Calculadora.webp',
     tech: [Tags.HTML, Tags.CSS, Tags.JS],
     link: 'https://elementary-calculator.pages.dev/',
-    github: 'https://github.com/Usuario6842/calculadora-simple'
+    github: 'https://github.com/holddev/calculadora-simple'
   },
 ]
 
