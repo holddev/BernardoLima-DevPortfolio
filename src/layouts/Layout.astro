@@ -4,9 +4,11 @@ import Header from "../components/Header.astro";
 interface Props {
 	title: string;
 	description: string;
+	image: string;
+	url: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image, url } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,7 +19,25 @@ const { title, description } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/code.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="canonical" href={url} />
+
 		<title>{title}</title>
+
+		<!-- Open Graph -->
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content={url} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={title} />
+		<meta property="og:image" content={image} />
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="twitter:domain" content="bernardolc-portfolio.deno.dev" />
+		<meta property="twitter:url" content={url} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={image} />
 	</head>
 	<body class="max-w-5xl mx-auto bg-[#030712] text-[#ebeced]">
 		<div
