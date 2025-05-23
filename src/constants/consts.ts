@@ -145,6 +145,14 @@ export const content: Content = {
 
 export const projects: Project[] = [
   {
+    name: 'Pixminify',
+    description: 'Esta es una herramienta de optimización de imágenes, con la cual puedes reducir el peso de tus imagenes y ahorrar espacio de almacenamiento.',
+    image: '../assets/Pixminify.webp',
+    tech: [Tags.REACTJS, Tags.TS, Tags.TAILWIND],
+    link: 'https://pixminify.pages.dev/',
+    github: 'https://github.com/holddev/pixminify-optimizer'
+  },
+  {
     name: 'Todo App',
     description: 'Esta es una app simple e intuitiva que permite gestionar tareas mediante las operaciones CRUD básicas, incluyendo la opción de filtrar por tarea completada. Para ello, utilicé los React Custom Hooks para mantener componentes limpios, legibles y escalables.',
     image: '../assets/TodoApp.webp',
