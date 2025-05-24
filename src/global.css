@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme{
+  --color-background: #000000;
+  --font-jura: 'Jura Variable', sans-serif;
+  --font-questrial: 'Questrial', sans-serif;
+}
