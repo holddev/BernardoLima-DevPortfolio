@@ -6,11 +6,11 @@ import SassSVG from "../components/icons/Sass.astro"
 import AstroSVG from "../components/icons/AstroJS.astro"
 import ReactJSSVG from "../components/icons/ReactJS.astro"
 import TailwindSVG from "../components/icons/Tailwind.astro"
+import NextJSSVG from "../components/icons/NextJS.astro"
 
 
 
 type NavLinks = {
-  label: string
   href: string
   text: string
 }
@@ -19,19 +19,13 @@ interface Content {
   navLinks: NavLinks[]
 }
 
-export type TagKey = keyof typeof Tags
-
 export interface Tag {
   name: string
   color: string
   icon: any
 }
-interface Skill {
-  name: string
-  icon: any
-}
 
-export const Tags: Record<string, Tag> = {
+export const skills: Record<string, Tag> = {
   HTML: {
     name: 'HTML',
     color: '#e34f2644',
@@ -71,43 +65,13 @@ export const Tags: Record<string, Tag> = {
     name: 'Astro JS',
     color: '#ffffff44',
     icon: AstroSVG
-  }
+  },
+  NEXTJS: {
+    name: 'Next JS',
+    color: '#8f8f8f44',
+    icon: NextJSSVG
+  },
 }
-
-export const skills: Skill[] = [
-  {
-    name: 'HTML',
-    icon: HtmlSVG
-  },
-  {
-    name: 'JavaScript',
-    icon: JavaScriptSVG
-  },
-  {
-    name: 'TypeScript',
-    icon: TypeScriptSVG
-  },
-  {
-    name: 'CSS',
-    icon: CssSVG
-  },
-  {
-    name: 'Sass',
-    icon: SassSVG
-  },
-  {
-    name: 'Tailwind CSS',
-    icon: TailwindSVG
-  },
-  {
-    name: 'React JS',
-    icon: ReactJSSVG
-  },
-  {
-    name: 'Astro JS',
-    icon: AstroSVG
-  }
-]
 
 export interface Project {
   name: string
@@ -122,23 +86,19 @@ export const content: Content = {
   navLinks: [
     {
       href: '#inicio',
-      label: 'Inicio',
       text: 'Inicio'
     },
     {
+      href: '#experiencia',
+      text: 'Experiencia'
+    },
+    {
       href: '#proyectos',
-      label: 'Proyectos',
       text: 'Proyectos'
     },
     {
       href: '#habilidades',
-      label: 'Habilidades',
       text: 'Habilidades'
-    },
-    {
-      href: '#sobre_mi',
-      label: 'Sobre mí',
-      text: 'Sobre mí'
     }
   ]
 }
@@ -148,7 +108,7 @@ export const projects: Project[] = [
     name: 'Pixminify',
     description: 'Esta es una herramienta de optimización de imágenes, con la cual puedes reducir el peso de tus imagenes y ahorrar espacio de almacenamiento.',
     image: '../assets/Pixminify.webp',
-    tech: [Tags.REACTJS, Tags.TS, Tags.TAILWIND],
+    tech: [skills.REACTJS, skills.TS, skills.TAILWIND],
     link: 'https://pixminify.pages.dev/',
     github: 'https://github.com/holddev/pixminify-optimizer'
   },
@@ -156,7 +116,7 @@ export const projects: Project[] = [
     name: 'Todo App',
     description: 'Esta es una app simple e intuitiva que permite gestionar tareas mediante las operaciones CRUD básicas, incluyendo la opción de filtrar por tarea completada. Para ello, utilicé los React Custom Hooks para mantener componentes limpios, legibles y escalables.',
     image: '../assets/TodoApp.webp',
-    tech: [Tags.REACTJS, Tags.TS, Tags.SASS],
+    tech: [skills.REACTJS, skills.TS, skills.SASS],
     link: 'https://todo-app-ts-beta.vercel.app/',
     github: 'https://github.com/holddev/react-todo-app-ts'
   },
@@ -164,9 +124,20 @@ export const projects: Project[] = [
     name: 'Calculadora de operaciones básicas',
     description: 'Esta calculadora utiliza las tecnologías fundamentales del desarrollo web. Además, se emplea el popular lenguaje de programación JavaScript. Su objetivo es demostrar mis habilidades en el uso de herramientas potentes que forman la base del desarrollo de sitios web.',
     image: '../assets/Calculadora.webp',
-    tech: [Tags.HTML, Tags.CSS, Tags.JS],
+    tech: [skills.HTML, skills.CSS, skills.JS],
     link: 'https://elementary-calculator.pages.dev/',
     github: 'https://github.com/holddev/calculadora-simple'
   },
+]
+
+export const experiences = [
+  {
+    workPosition: "Pasantia Frontend Developer",
+    company: "Noxun SRL",
+    startDate: "Diciembre 2024",
+    endDate: "Abril 2025",
+    location: "La Paz, Bolivia",
+    description: "En Noxun SRL, trabajé como desarrollador frontend, participando activamente en el desarrollo e implementación de nuevas funcionalidades, generación de reportes y creación de módulos para los sistemas en operación. Utilicé tecnologías como Next.js, React.js, ShadCN y Tailwind CSS para desarrollar interfaces modernas, eficientes y centradas en la experiencia del usuario.",
+  }
 ]
 
