@@ -14,9 +14,11 @@
     "@astrojs/deno": "^5.0.1",
     "@deno/astro-adapter": "^0.1.3",
     "@fontsource-variable/jura": "^5.0.21",
+    "@fontsource/dosis": "^5.2.5",
     "@fontsource/questrial": "^5.0.14",
     "@tailwindcss/vite": "^4.1.7",
     "astro": "^5.8.0",
+    "gsap": "^3.13.0",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.5.4"
   }
