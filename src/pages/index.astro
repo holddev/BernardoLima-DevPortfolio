@@ -3,9 +3,9 @@ import "@fontsource-variable/jura";
 import Layout from "../layouts/Layout.astro";
 import "@fontsource/questrial";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
 import Projects from "../components/Projects.astro";
 import Skills from "../components/Skills.astro";
+import Experience from "../components/Experience.astro";
 ---
 
 <Layout
@@ -14,10 +14,15 @@ import Skills from "../components/Skills.astro";
 	image="https://raw.githubusercontent.com/holddev/BernardoLima-DevPortfolio/refs/heads/main/public/assets/Portfolio.webp"
 	url="https://bernardolc-portfolio.deno.dev/"
 >
-	<main class="font-questrial max-w-2xl m-auto px-4">
-		<Hero />
-		<Projects id="proyectos" />
-		<Skills id="habilidades" />
-		<About id="sobre_mi" />
+	<main
+		class="scroll-container relative w-full h-screen overflow-hidden font-questrial max-h-screen max-w-screen"
+	>
+		<div id="scroll-sections" class="flex w-[400%]">
+			<Hero id="inicio" class="w-full overflow-hidden" />
+			<Experience id="experiencia" class="w-full overflow-hidden" />
+			<Projects id="proyectos" class="w-full overflow-hidden" />
+			<Skills id="habilidades" class="w-full overflow-hidden" />
+		</div>
 	</main>
+	<script type="module" src="/src/scripts/scrollAnimations.js"></script>
 </Layout>
