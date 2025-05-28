@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
+:root{
+  --background: #000000;
+  --primary:#ff9900;
+  --foreground:#d4d4d4;
+}
+
 @theme{
-  --color-background: #000000;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --font-dosis:'Dosis', sans-serif;
   --font-jura: 'Jura Variable', sans-serif;
   --font-questrial: 'Questrial', sans-serif;
 }
