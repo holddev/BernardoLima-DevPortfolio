@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       trigger: "#experiencia",
       containerAnimation: horizontalTween,
       start: "start center",
-      end: "bottom 80%",
+      end: "center 50%",
       scrub: true,
     }
   })
@@ -94,11 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   tl1.from("#inicio .hero__badge", {
-    duration: 0.5,
+    duration: 1,
     opacity: 0,
-    xPercent: -50,
+    xPercent: -80,
     ease: "power2.out"
   }, "startTitle")
+    .from(".header", {
+      yPercent: -110,
+      duration: 1
+    }, "startTitle")
     .from("#inicio .hero__title", {
       duration: 0.6,
       opacity: 0,
