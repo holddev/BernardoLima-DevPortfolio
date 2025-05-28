@@ -4,37 +4,41 @@ import Logo from "./icons/Logo.astro";
 ---
 
 <header
-  class="bg-[#3f0fff6c] text-[#e5e7eb]
-  flex sm:justify-between justify-center items-center
-  py-2 px-16 w-full fixed top-0 left-0 z-10"
+  class="bg-[#0d111746] backdrop-blur-sm text-[#e5e7eb]
+   w-full fixed top-0 left-0 z-10"
 >
-  <h2 class="sm:block hidden">
-    <a href="#inicio" title="Portfolio logo" aria-label="Portfolio logo"
-      ><Logo class="size-10" /></a
-    >
-  </h2>
-  <nav>
-    <ul
-      class="flex justify-between items-center gap-10 font-questrial text-base"
-    >
-      {
-        content.navLinks.map(({ href, text, label }) => {
-          return (
-            <li>
-              <a
-                id="item-menu"
-                class="hover:text-[#e58b03] transition-all duration-300"
-                aria-label={label}
-                href={href}
-              >
-                {text}
-              </a>
-            </li>
-          );
-        })
-      }
-    </ul>
-  </nav>
+  <div
+    class="header w-full flex justify-center sm:justify-between items-center max-w-7xl mx-auto py-2 px-5 sm:px-10"
+  >
+    <h2 class="sm:block hidden">
+      <a href="#inicio" title="Portfolio logo" aria-label="Portfolio logo"
+        ><Logo class="size-10" /></a
+      >
+    </h2>
+    <nav class="w-full sm:w-fit">
+      <ul
+        class="flex justify-between items-center sm:gap-10 font-questrial text-base"
+      >
+        {
+          content.navLinks.map(({ href, text }) => {
+            return (
+              <li>
+                <a
+                  id="item-menu"
+                  class="group hover:text-primary/80 transition flex flex-col"
+                  aria-label={text}
+                  href={href}
+                >
+                  {text}
+                  <hr class="inline-block w-[10px] group-hover:w-full group-[.active]:w-full h-[2px] border-none bg-primary/80 rounded-full transition-[width] duration-500" />
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <script>
@@ -53,9 +57,9 @@ import Logo from "./icons/Logo.astro";
         if (entry.isIntersecting) {
           itemsMenu.forEach((item) => {
             if (item.getAttribute("href") === `#${id}`) {
-              item.classList.add("text-[#c4872c]");
+              item.classList.add("text-primary/80", "active");
             } else {
-              item.classList.remove("text-[#c4872c]");
+              item.classList.remove("text-primary/80", "active");
             }
           });
         }
