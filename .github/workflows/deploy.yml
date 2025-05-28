@@ -1,9 +1,9 @@
 name: Deploy
 on:
   push:
-    branches: main
+    branches: v2
   pull_request:
-    branches: main
+    branches: v2
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Deno
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
           deno-version: v1.x
 
@@ -27,9 +27,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-
-      - name: Install pnpm
-        run: "npm install -g pnpm"
 
       - name: Install step
         run: "pnpm install"
@@ -43,3 +40,5 @@ jobs:
           project: "bernardolc-portfolio"
           entrypoint: "server/entry.mjs"
           root: "dist"
+          
+          
