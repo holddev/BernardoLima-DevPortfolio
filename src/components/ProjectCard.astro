@@ -1,85 +1,120 @@
 ---
 import type { Project } from "../constants/consts";
+import ExternalLink from "./icons/ExternalLink.astro";
 import Github from "./icons/Github.astro";
 import Link from "./icons/Link.astro";
 
-type Props = Project;
-
-const { name, description, image, tech, github, link } = Astro.props;
+interface Props {
+  id: string;
+  proyect: Project;
+}
+const { id } = Astro.props;
+const { name, description, image, tech, github, link } = Astro.props.proyect;
 ---
 
-<li
-  class="bg-gradient-to-b from-[#251454] to-[#030712]
-  rounded-lg p-2
-  shadow-md shadow-[#2c1765] sm:w-full"
+<div
+  class="bg-gradient-to-b from-black via-black to-primary/10
+  rounded-lg hover:scale-[1.015] overflow-hidden group
+  shadow-sm hover:shadow-primary transition-all duration-500 w-full"
 >
-  <article
-    class="w-full flex flex-col sm:flex-row sm:items-start items-center gap-4"
-  >
+  <article class="relative w-full h-auto">
     <div
-      class="w-full sm:w-[40%] h-full flex items-start justify-start border-2 border-black rounded-md overflow-hidden"
+      class="relative w-full h-full flex items-start justify-start overflow-hidden"
     >
       <img
         src={image}
         alt={name}
-        class="w-full sm:h-52 h-72 object-cover scale-110 hover:scale-100 transition"
+        class="w-full h-[190px] lg:h-[160px] group-hover:scale-[1.04] object-cover transition duration-500"
         loading="lazy"
       />
+      <div
+        class="absolute inset-0 w-full h-full bg-gradient-to-t from-black/80 via-transparent to-transparent"
+      >
+      </div>
+      <div
+        class="absolute top-2 right-2 z-10
+    flex items-center gap-2
+    opacity-0 group-hover:opacity-100 transition duration-300"
+      >
+        <a
+          class="rounded-full bg-black p-1"
+          href={github}
+          target="_blank"
+          title="Ir al código"
+        >
+          <Github class="size-4 text-white" />
+        </a>
+        <a
+          class="rounded-full bg-primary/80 p-1"
+          href={link}
+          target="_blank"
+          title="Ir al demo"
+        >
+          <ExternalLink class="size-4 text-white" />
+        </a>
+      </div>
+      <span
+        class="absolute bottom-2 left-2 size-6 p-1 border-1 rounded-full text-xs font-semibold
+      grid place-content-center text-primary bg-primary/20 border-primary/70"
+        >{id}</span
+      >
     </div>
-    <div class="w-full sm:w-[60%]">
-      <h4 class="font-bold">{name}</h4>
-      <p class="py-4 text-pretty text-[#aeaead]">
+    <div class="w-full px-4 pb-4">
+      <h4 class="font-bold group-hover:text-primary">{name}</h4>
+      <p
+        class="pt-2 text-pretty text-sm text-foreground/80 line-clamp-3 max-h-40"
+      >
         {description}
       </p>
-      <ul class="flex justify-start items-center gap-3 py-1">
+      <ul class="flex justify-start items-center gap-3 pt-3">
         {
           tech.map(({ icon: Icon, name, color }) => (
             <li
               class=" flex items-center justify-center gap-1 
-              border-1 rounded-full px-3 py-1"
+            rounded-full px-2 py-1"
               style={{ backgroundColor: color || "#E5E7EB" }}
             >
               <Icon class="size-4" />
-              <span class="text-xs">{name}</span>
+              <span class="text-xs whitespace-nowrap">{name}</span>
             </li>
           ))
         }
       </ul>
-      <ul class="flex gap-3 justify-end pt-4">
+      <ul class="flex gap-3 justify-center pt-6">
         {
           github && (
-            <li>
+            <li class="w-full">
               {" "}
               <a
                 class="flex gap-1 items-center justify-center
-              py-1 px-2 rounded-md border-[1px] border-[#7a7878]
-              scale-100 hover:scale-105 transition-all duration-300
-              bg-[#272525] hover:bg-[#2e2d2d]"
+            py-1 px-2 rounded-md border-[1px] border-primary/70
+            scale-100 hover:scale-105 transition-all duration-300
+            text-primary/70 hover:bg-primary/10"
                 href={github}
-                aria-label="codigo"
+                aria-label="Ir al código"
                 rel="noopener nooferrer"
                 target="_blank"
               >
-                <Github class="size-4 text-[#ebeced]" /> Code
+                <Github class="size-4" /> Código
               </a>
             </li>
           )
         }
         {
           link && (
-            <li>
+            <li class="w-full">
               {" "}
               <a
                 class="flex gap-1 items-center justify-center
-              py-1 px-2 rounded-md border-[1px] border-[#7a7878]
-              scale-100 hover:scale-105 transition-all duration-300
-              bg-[#272525] hover:bg-[#2e2d2d]"
+            py-1 px-2 rounded-md border-[1px] border-[#7a7878]
+            scale-100 hover:scale-105 transition-all duration-300
+            bg-primary/70 hover:bg-primary/60"
                 href={link}
-                aria-label="sitio"
+                aria-label="Ir al demo"
                 rel="noopener nooferrer"
                 target="_blank"
               >
-                <Link class="size-4 text-[#ebeced]" /> Preview
+                <Link class="size-4 text-foreground" /> Preview
               </a>
             </li>
           )
@@ -87,4 +122,4 @@ const { name, description, image, tech, github, link } = Astro.props;
       </ul>
     </div>
   </article>
-</li>
+</div>
