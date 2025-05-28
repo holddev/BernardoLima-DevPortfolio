@@ -1,45 +1,136 @@
 ---
 import { skills } from "../constants/consts";
 import Code from "./icons/Code.astro";
+import User from "./icons/User.astro";
 import IconTitle from "./IconTitle.astro";
 interface Props {
   id: string;
+  class?: string;
 }
 ---
 
-<section class="pt-16" {...Astro.props}>
-  <IconTitle title="Habilidades">
-    <Code class="size-8" />
-  </IconTitle>
-  <div class="w-full overflow-hidden">
-    <ul class="skills w-auto flex items-center justify-center sm:gap-4 gap-4">
-      {
-        skills.map(({ name, icon: Icon }) => (
-          <li class="skill flex flex-col items-center justify-center flex-shrink-0">
-            <Icon class="sm:size-16 size-8" />
-            <span class="sm:text-1 text-[.6rem]">{name}</span>
-          </li>
-        ))
-      }
-    </ul>
+<section
+  class={`mx-auto bg-[#121f26] min-h-screen text-foreground ${Astro.props.class}`}
+  id={Astro.props.id}
+>
+  <div class="max-w-5xl mx-auto pt-16 skills-wrapper px-4 sm:px-5">
+    <IconTitle title="Habilidades">
+      <Code class="size-8" />
+    </IconTitle>
+    <div class="relative py-6 max-w-2xl mx-auto overflow-hidden">
+      <div
+        class="absolute inset-0 w-full h-full z-10 bg-gradient-to-r from-[#121f26]/20 via-transparent to-[#121f26]/20"
+      >
+      </div>
+      <div class="flex flex-col gap-4">
+        {
+          Array.from({ length: 3 }).map((_, idx) => (
+            <div class="overflow-hidden">
+              <div class="flex items-center gap-2 hab__tech">
+                {Array.from({ length: 2 }).map(() => (
+                  <ul
+                    class={`flex items-center gap-2 justify-center ${idx % 2 === 0 ? "skills" : "skills-reverse"}`}
+                    style={{ animationDelay: `${idx * 1}s` }}
+                  >
+                    {Object.values(skills).map(
+                      ({ name, icon: Icon, color }) => (
+                        <li
+                          class="flex items-center justify-center gap-1 rounded-full px-2 py-1"
+                          style={{ backgroundColor: color || "#E5E7EB" }}
+                        >
+                          <Icon class="size-4" />
+                          <span class="text-xs md:text-sm whitespace-nowrap">
+                            {name}
+                          </span>
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <IconTitle title="Sobre mí">
+      <User class="size-8" />
+    </IconTitle>
+    <div class="py-6 flex flex-col gap-4 hab__info">
+      <p class="text-pretty">
+        ¡Hola! Soy Bernardo Lima Cardenas 👨‍💻💻, un apasionado y autodidacta del
+        desarrollo web. Siempre me tuve curiosidad acerca del trasfondo que
+        conlleva la construcción de aplicaciones y servicios en línea.
+        Actualmente, estoy aprendiendo nuevas tecnologías como Astro JS y React
+        JS, lo que me motiva a seguir explorando el potencial de la web.
+      </p>
+      <p class="text-pretty">
+        Mi objetivo es seguir creciendo como desarrollador 📚 y aplicar mis
+        habilidades en un entorno real. Estoy comprometido a mejorar
+        continuamente, afrontar nuevos desafíos que me permitan crecer tanto
+        personal como profesionalmente.
+      </p>
+      <p class="text-pretty">
+        Fuera del mundo del código, disfruto de hacer ejercicio regularmente, lo
+        que me ayuda a mantener un equilibrio en mi vida. Estoy emocionado por
+        las oportunidades que vienen y listo para enfrentar nuevos desafíos 🎉.
+      </p>
+    </div>
   </div>
 </section>
 
 <style>
-  .skills {
-    display: flex;
-    animation: scroll 5s linear infinite;
+  .skills.animate-scroll {
+    will-change: transform;
+    animation: scrolling 25s linear infinite;
+  }
+  .skills-reverse.animate-scroll {
+    will-change: transform;
+    animation: scrolling 25s linear infinite reverse;
   }
 
-  @keyframes scroll {
+  @keyframes scrolling {
     0% {
-      transform: translateX(-2rem);
-    }
-    50% {
-      transform: translateX(2rem);
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(-2rem);
+      transform: translateX(-100%);
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".skills-wrapper");
+
+    if (!section) return;
+
+    const skillLists = section.querySelectorAll(".skills,.skills-reverse");
+
+    if (skillLists) {
+      const observerCallback = (
+        entries: IntersectionObserverEntry[],
+        skillLists: NodeListOf<Element>,
+      ) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            skillLists.forEach((el) => el.classList.add("animate-scroll"));
+          } else {
+            skillLists.forEach((el) => el.classList.remove("animate-scroll"));
+          }
+        });
+      };
+      const observerOptions: IntersectionObserverInit = {
+        root: null,
+        threshold: 0.1,
+      };
+      const observer = new IntersectionObserver(
+        (entries) => observerCallback(entries, skillLists),
+        observerOptions,
+      );
+
+      observer.observe(section);
+    }
+  });
+</script>
