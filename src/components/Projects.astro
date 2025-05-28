@@ -1,31 +1,41 @@
 ---
 import { projects } from "../constants/consts";
-import Siutcase from "./icons/Siutcase.astro";
+import Rocket from "./icons/Rocket.astro";
 import IconTitle from "./IconTitle.astro";
 import ProjectCard from "./ProjectCard.astro";
 
 interface Props {
   id: string;
+  class?: string;
 }
 ---
 
-<section class="pt-16" {...Astro.props}>
-  <IconTitle title="Proyectos">
-    <Siutcase class="size-8" />
-  </IconTitle>
+<section
+  class={`mx-auto bg-gradient-to-b from-[#121f26] via-[#121f26] to-[#1b2d35] min-h-screen text-foreground ${Astro.props.class} `}
+  id={Astro.props.id}
+>
+  <div class="px-4 sm:px-5 max-w-5xl mx-auto">
+    <div class="pt-16">
+      <IconTitle title="Proyectos">
+        <Rocket class="size-8" />
+      </IconTitle>
+    </div>
 
-  <ul class="flex gap-y-6 flex-col justify-center">
-    {
-      projects.map(({ name, description, image, tech, github, link }) => (
-        <ProjectCard
-          name={name}
-          description={description}
-          image={image}
-          tech={tech}
-          link={link}
-          github={github}
-        />
-      ))
-    }
-  </ul>
+    <ul
+      class="flex justify-start items-center gap-4 pt-20 sm:pt-16 md:pt-14 lg:pt-10 w-full overflow-x-auto pb-4 px-2"
+    >
+      {
+        projects.map(
+          ({ name, description, image, tech, github, link }, index) => (
+            <li class="proy__card h-auto min-w-[85dvw] sm:min-w-[350px] lg:min-w-auto w-full ">
+              <ProjectCard
+                id={`0${++index}`}
+                proyect={{ name, description, image, tech, github, link }}
+              />
+            </li>
+          ),
+        )
+      }
+    </ul>
+  </div>
 </section>
