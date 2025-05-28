@@ -2,26 +2,32 @@
 import ArrowLeft from "./icons/ArrowLeft.astro";
 import Document from "./icons/Document.astro";
 import Download from "./icons/Download.astro";
+
+interface Props {
+  class?: string;
+}
 ---
 
 <button
   id="viewCv"
-  class="flex justify-center gap-1 mx-auto my-10 py-1 p-2
-border-2 text-[#ff9900] border-[#0000] border-b-[#ff9900] rounded-full
-hover:bg-[#ff9900] hover:text-[#000] hover:border-[#0000] transition-all duration-300"
+  class={`${Astro.props.class} flex items-center justify-center gap-1 mx-auto my-10 py-1 px-2
+border-2 text-primary border-primary rounded-full cursor-pointer
+hover:bg-primary hover:text-[#000] hover:border-[#0000] transition-all duration-300`}
   aria-label="Ver Curriculum Vitae"
 >
-  <Document class="size-5" />Ver CV</button
->
+  <Document class="size-5" />Ver CV
+</button>
+
 <dialog
   id="dialogView"
-  class="h-[80dvh] backdrop:bg-[#00000044] md:h-[100vh] overflow-auto"
+  class="h-[80dvh] backdrop:bg-[#00000044] backdrop:backdrop-blur-[1px] md:h-[100vh] overflow-hidden rounded-md mt-4 mx-auto"
 >
-  <div class="rounded-sm">
+  <div>
     <button
       id="closeCv"
-      class="absolute top-0 left-0"
+      class="absolute top-0 left-0 cursor-pointer"
       aria-label="Volver al inicio"
+      title="Volver al inicio"
     >
       <ArrowLeft
         class="size-8 hover:text-[#fa8837] transition-all duration-300"
@@ -30,20 +36,19 @@ hover:bg-[#ff9900] hover:text-[#000] hover:border-[#0000] transition-all duratio
     <div class="md:h-[500px] sm:h-[90vh] h-full mt-10 sm:mt-0 md:px-2">
       <img
         class="object-cover w-full h-full"
-        src="/assets/cv01.webp"
+        src="/assets/CV_003.webp"
         alt="Curriculum Vitae de Bernardo Lima"
       />
     </div>
     <a
-      href="/Bernardo_CV_002.pdf"
+      href="/Bernardo_CV_003.pdf"
       rel="noopener noreferrer"
-      class="absolute top-0 right-0"
+      class="absolute bottom-0 right-0 bg-primary/20 hover:bg-white/80 border-2 border-primary rounded-md p-1 group"
       download
       aria-label="Descargar Curriculum Vitae"
+      title="Descargar Curriculum Vitae"
     >
-      <Download
-        class="size-8 hover:text-[#fa8837] transition-all duration-300"
-      />
+      <Download class="size-8 text-primary transition-all duration-300" />
     </a>
   </div>
 </dialog>
