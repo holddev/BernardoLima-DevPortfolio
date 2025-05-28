@@ -5,9 +5,14 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<h3
-  class="flex items-center gap-x-2 font-semibold text-4xl text-[#c4872c] py-2"
->
-  <slot />
-  <strong>{title}</strong>
-</h3>
+<div class="w-fit title">
+  <h3
+    class="title__h3 flex items-center gap-x-2 text-4xl text-primary/70 py-2 font-dosis -tracking-tighter font-[400] uppercase"
+  >
+    <slot />
+    <strong>{title}</strong>
+  </h3>
+  <hr
+    class="title__hr h-1 border-0 w-full bg-gradient-to-r from-primary/70 via-primary/50 to-transparent rounded-full"
+  />
+</div>
