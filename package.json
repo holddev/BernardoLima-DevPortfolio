@@ -12,7 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/deno": "^5.0.1",
-    "@astrojs/vercel": "^8.1.4",
+    "@deno/astro-adapter": "^0.3.1",
     "@fontsource-variable/jura": "^5.0.21",
     "@fontsource/dosis": "^5.2.5",
     "@fontsource/questrial": "^5.0.14",
