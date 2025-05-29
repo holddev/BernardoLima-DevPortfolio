@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollToPlugin);
 
-document.addEventListener("DOMContentLoaded", () => {
+export const setupScrollAnimations = () => {
   const sections = gsap.utils.toArray("#inicio, #experiencia, #proyectos, #habilidades");
 
   //scroll horizontal
@@ -227,6 +227,4 @@ document.addEventListener("DOMContentLoaded", () => {
     .from("#habilidades .hab__tech", {
       yPercent: 100,
     }, "habi")
-
-
-});
+}
