@@ -24,9 +24,9 @@ import Experience from "../components/Experience.astro";
 			<Skills id="habilidades" class="w-full overflow-hidden" />
 		</div>
 	</main>
-	<script type="module" is:inline>
-		import { setupScrollAnimations } from "/src/scripts/scrollAnimations.js";
-		document.addEventListener("DOMContentLoaded", () => {
+	<script>
+		import { setupScrollAnimations } from "../scripts/scrollAnimations.js";
+		document.fonts.ready.then(() => {
 			setupScrollAnimations();
 		});
 	</script>
