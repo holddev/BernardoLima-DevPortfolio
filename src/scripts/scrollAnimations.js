@@ -76,7 +76,6 @@ export const setupScrollAnimations = () => {
       start: "start center",
       end: "center center",
       scrub: true,
-      markers: true
     }
   })
 
