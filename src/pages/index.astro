@@ -26,7 +26,7 @@ import Experience from "../components/Experience.astro";
 	</main>
 	<script>
 		import { setupScrollAnimations } from "../scripts/scrollAnimations.js";
-		document.fonts.ready.then(() => {
+		document.addEventListener("DOMContentLoaded", () => {
 			setupScrollAnimations();
 		});
 	</script>
