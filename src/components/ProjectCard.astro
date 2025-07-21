@@ -24,7 +24,7 @@ const { name, description, image, tech, github, link } = Astro.props.proyect;
       <img
         src={image}
         alt={name}
-        class="w-full h-[190px] lg:h-[160px] group-hover:scale-[1.04] object-cover transition duration-500"
+        class="min-w-[350px] w-full group-hover:scale-[1.04] object-cover transition duration-500"
         loading="lazy"
       />
       <div
@@ -66,11 +66,13 @@ const { name, description, image, tech, github, link } = Astro.props.proyect;
       >
         {description}
       </p>
-      <ul class="flex justify-start items-center gap-3 pt-3">
+      <ul
+        class="flex flex-wrap justify-start items-start gap-x-3 gap-y-1.5 pt-3 h-16 overflow-hidden"
+      >
         {
           tech.map(({ icon: Icon, name, color }) => (
             <li
-              class=" flex items-center justify-center gap-1 
+              class="flex items-center justify-center gap-1 
             rounded-full px-2 py-1"
               style={{ backgroundColor: color || "#E5E7EB" }}
             >
@@ -80,7 +82,7 @@ const { name, description, image, tech, github, link } = Astro.props.proyect;
           ))
         }
       </ul>
-      <ul class="flex gap-3 justify-center pt-6">
+      <ul class="flex gap-3 justify-center pt-5">
         {
           github && (
             <li class="w-full">
