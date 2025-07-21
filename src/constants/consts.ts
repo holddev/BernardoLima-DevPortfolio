@@ -7,6 +7,9 @@ import AstroSVG from "../components/icons/AstroJS.astro"
 import ReactJSSVG from "../components/icons/ReactJS.astro"
 import TailwindSVG from "../components/icons/Tailwind.astro"
 import NextJSSVG from "../components/icons/NextJS.astro"
+import HonoJSSVG from "../components/icons/HonoJS.astro"
+import DrizzleORMSVG from "../components/icons/DrizzleORM.astro"
+import TURSODBSVG from "../components/icons/TursoDBSVG.astro"
 
 
 
@@ -71,6 +74,21 @@ export const skills: Record<string, Tag> = {
     color: '#8f8f8f44',
     icon: NextJSSVG
   },
+  HONOJS: {
+    name: 'Hono JS',
+    color: '#ff975844',
+    icon: HonoJSSVG
+  },
+  DRIZZLEORM: {
+    name: 'Drizzle ORM',
+    color: '#c5f74f44',
+    icon: DrizzleORMSVG
+  },
+  TURSODB: {
+    name: 'Turso DB',
+    color: '#f0db4f44',
+    icon: TURSODBSVG
+  }
 }
 
 export interface Project {
@@ -104,6 +122,14 @@ export const content: Content = {
 }
 
 export const projects: Project[] = [
+  {
+    name: 'Trello Clon',
+    description: 'Este es un clon de Trello, una herramienta que permite la gestión de tareas y proyectos. Permite crear tableros, listas y tarjetas para organizar tus proyectos.',
+    image: '../assets/TrelloClon.webp',
+    tech: [skills.REACTJS, skills.TS, skills.TAILWIND, skills.HONOJS, skills.DRIZZLEORM, skills.TURSODB],
+    link: 'https://trello-clon-demo.vercel.app/',
+    github: 'https://github.com/holddev/trello-clon-spa'
+  },
   {
     name: 'Pixminify',
     description: 'Esta es una herramienta de optimización de imágenes, con la cual puedes reducir el peso de tus imagenes y ahorrar espacio de almacenamiento.',
