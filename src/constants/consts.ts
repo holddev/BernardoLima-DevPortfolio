@@ -123,6 +123,14 @@ export const content: Content = {
 
 export const projects: Project[] = [
   {
+    name: 'Tono UI',
+    description: 'Esta es una herramienta de diseño que permite generar diversos tipos de paletas de colores y la posibilidad de verlas en diferentes interfaces.',
+    image: '../assets/TonoUI.webp',
+    tech: [skills.REACTJS, skills.TS, skills.TAILWIND],
+    link: 'https://tonoui.vercel.app/',
+    github: 'https://github.com/holddev/TonoUI-kit'
+  },
+  {
     name: 'Trello Clon',
     description: 'Este es un clon de Trello, una herramienta que permite la gestión de tareas y proyectos. Permite crear tableros, listas y tarjetas para organizar tus proyectos.',
     image: '../assets/TrelloClon.webp',
